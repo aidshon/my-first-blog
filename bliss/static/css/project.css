@@ -1,0 +1,11 @@
+img {
+	width: 100%;
+	height: 662px;
+	position: absolute;
+}
+.text, .continueButton {
+	font-size: 25px; 
+    font-weight: bold; 
+    font-family: 'Dosis', sans-serif;
+    font-family: 'Inconsolata', monospace;
+}

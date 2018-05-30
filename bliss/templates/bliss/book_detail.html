@@ -1,0 +1,43 @@
+{% extends 'bliss/base.html' %}
+{% block content %}
+<div class="container" style="margin-top: 130px; margin-bottom: 20px">
+	          <div class="col-lg-4 col-md-4 col-sm-6 bookholder" style="width: 750px; height: 500px">
+            <div class="row">
+              <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 cover">
+                <img src="{{ book.image }}" class="books-images" style="width: 260px; height: 400px; margin-left: 20px; margin-top: 20px">
+              </div>
+              <div class="col-lg-8 col-lg-offset-1 col-md-8 col-md-offset-1 col-sm-8 col-xs-8 description" style="position: relative; left: 30px">
+                <h1>Title: {{ book.title }}</h1> 
+                <h1>Author: {{ book.author }}<br></h1>
+                <h1>Genre: {{ book.genre }}<br></h1>
+                <h1>Year: {{ book.year }}</h1>
+                <h1 style="margin-right: 50px">{{ book.text }}</h1>
+                <a href="{{ book.pdf }}"><button type="button" class="btn about">Read</button></a>
+                {% if user.is_authenticated %}
+     <a href="{% url 'commentbook' pk=book.pk %}" style="margin-left: 10px">
+                <button style="border: none; background: none;"><img src="/static/bliss-images/edit.png"></button></a>
+    {% endif %}
+              </div>
+            </div>
+          </div>
+</div>
+{% for comment in commentbook %}
+<div class="container" style="position: relative; left: 30px">
+  <div class="row">
+<div class="col-sm-1">
+<div class="thumbnail">
+<img class="img-responsive user-photo" src="http://moziru.com/images/profile-clipart-end-user-20.png">
+</div>                 
+</div>
+<div class="col-sm-5">
+<div class="panel panel-default">
+<div class="panel-heading">
+<strong>{{ comment.author }}</strong> <span class="text-muted">{{ comment.created_date }}</span>
+</div>
+<div class="panel-body">{{ comment.text }}</div>
+</div>
+</div>
+</div>
+</div>
+{% endfor %}
+{% endblock %}

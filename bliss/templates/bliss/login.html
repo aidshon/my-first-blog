@@ -1,0 +1,17 @@
+{% extends 'bliss/base.html' %}
+{% block content %}
+<div class="container" style="margin-top: 250px; margin-bottom: 150px;">
+    <form class="login" method="POST">  
+    	{% csrf_token %}             
+        <img src="/static/bliss-images/user.png"><input type="text" name="username" placeholder="Username" class="inputs" id="username">
+        <br>
+        <img src="/static/bliss-images/key.png"><input type="password" name="password" placeholder="Password" class="inputs" id="password">
+        <br>
+        {% if login_error %}
+        	<label class="error">{{ login_error }}</label>
+        {% endif %}
+        <button type="submit" id="signin-btn" class="btn"">Sign in</button>
+    </form>
+    <a href="{% url 'register' %}"><button id="register-btn" class="btn">Register</button></a>
+</div>
+{% endblock %}

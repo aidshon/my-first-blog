@@ -1,0 +1,51 @@
+{% extends 'bliss/base.html' %}
+<script type="text/javascript">
+    ymaps.ready(function () {
+    var myMap = new ymaps.Map('map', {
+            center: [43.202979,76.658581],
+            zoom: 15
+        }, 
+        {
+            searchControlProvider: 'yandex#search'
+        }),
+
+        MyIconContentLayout = ymaps.templateLayoutFactory.createClass(
+            '<div style="color: #FFFFFF; font-weight: bold;">$[properties.iconContent]</div>'
+        ),
+
+        myPlacemark = new ymaps.Placemark(myMap.getCenter(), {
+            hintContent: 'Online book reader office',
+            balloonContent: 'bliss'
+        }, 
+        {
+            iconLayout: 'default#image',
+            iconImageHref: 'map-icon.png'
+        });
+        myMap.geoObjects.add(myPlacemark);
+});
+</script>
+{% block content %}
+      <div class="container">
+      <div class="row"></div>
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <h1 id="how-to-contact">How to contact us?</h1>
+        <h2 id="address"><span class="glyphicon glyphicon-globe"></span> microdistr. Altyn auyl, bld. 1, apt. 10<br><span id="bottom-address">Kaskelen, 040900, Kazakhstan</span></h2>
+        <h2 id="tel"><span class="glyphicon glyphicon-phone-alt"></span> Tel: +7 (775) 827 - 53 - 90<br><span class="glyphicon glyphicon-envelope"></span> E-mail: shongarieva@mail.ru</h2>
+      </div>
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="map">
+        </div>
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <h2 class="text-center" id="contacts-header">We are always ready to give you an answer<br>that will fully satisfy you and happy<br> to get references in order to be better.</h2>
+        <h2 id="follow">Follow us on: </h2>
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5 follow-items">
+              <a type="button" class="btn btn-link" href="https://vk.com/" target="_blank"><img class="networks" src="/static/bliss-images/vk.png"></a>
+               <a type="button" class="btn btn-link" href="https://www.facebook.com/" target="_blank"><img class="networks" src="/static/bliss-images/facebook.png"></a>
+                <a type="button" class="btn btn-link" href="https://www.instagram.com/" target="_blank"><img class="networks" src="/static/bliss-images/instagram.png"></a>
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
+{% endblock %}

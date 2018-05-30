@@ -1,0 +1,66 @@
+{% extends 'bliss/base.html' %}
+{% block content %}
+<div class="container info1">
+        <div class="row">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 paragraph1">
+            <p id="read" class="text-center"><span>EVERYONE</span><br>deserves to read good books</p>
+          </div>
+        </div>
+</div>
+<div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 header">
+            <h1>BESTSELLERS</h1>
+          </div>
+        </div>
+</div>
+<div class="container books">
+        <div class="row">
+        {% for book in books %}
+        {% ifequal 0 book.bestseller %}
+          <div class="col-lg-4 col-md-4 col-sm-6 bookholder">
+            <div class="row">
+              <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 cover">
+                <img src="{{ book.image }}" class="books-images">
+              </div>
+              <div class="col-lg-8 col-lg-offset-1 col-md-8 col-md-offset-1 col-sm-8 col-xs-8 description">
+                <h1>Author: {{ book.author }}<br></h1>
+                <h1>Genre: {{ book.genre }}<br></h1>
+                <h1>Year: {{ book.year }}</h1>
+                <a href="{% url 'bookdetail' pk=book.pk %}"><button type="button" class="btn about">About</button></a>
+              </div>
+            </div>
+          </div>
+          {% endifequal %}
+          {% endfor %}
+          </div>
+</div>
+<div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 header">
+            <h1>MUST READ</h1>
+          </div>
+        </div>
+</div>
+<div class="container books">
+        <div class="row">
+        {% for book in books %}
+        {% ifequal 1 book.bestseller %}
+          <div class="col-lg-4 col-md-4 col-sm-6 bookholder">
+            <div class="row">
+              <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 cover">
+                <img src="{{ book.image }}" class="books-images">
+              </div>
+              <div class="col-lg-8 col-lg-offset-1 col-md-8 col-md-offset-1 col-sm-8 col-xs-8 description">
+                <h1>Author: {{ book.author }}<br></h1>
+                <h1>Genre: {{ book.genre }}<br></h1>
+                <h1>Year: {{ book.year }}</h1>
+                <a href="{% url 'bookdetail' pk=book.pk %}"><button type="button" class="btn about">About</button></a>
+              </div>
+            </div>
+          </div>
+          {% endifequal %}
+          {% endfor %}
+          </div>
+</div>
+{% endblock %}
